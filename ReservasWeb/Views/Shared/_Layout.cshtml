@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ReservasWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ReservasWeb.styles.css" asp-append-version="true" />
+
+</head>
+<body class="sb-nav-fixed">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <nav class="sb-topnav navbar navbar-expand navbar-light navbar-orange">
+            <!-- Navbar Brand (ECORESERVAS a la izquierda)-->
+            
+            <a class="navbar-brand" href="_Layout.cshtml">ECORESERVAS</a>
+
+            <!-- Navbar Toggler-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Menu-->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+                <ul class="navbar-nav">
+                    <!-- Botón Buscar -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="Explorar.aspx">Buscar</a>
+                    </li>
+
+                    <!-- Botón Mis Reservas -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="MisReservas.aspx">Mis Reservas</a>
+                    </li>
+
+                    <!-- Dropdown Usuario -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="User">Logout @User.Identity.Name</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        @if (User.IsInRole("Admin"))
+        {
+            <p>asmin</p>
+        }
+      
+                <main>
+                    <div class="contanier-fluid px-4">
+                        @RenderBody()
+                    </div>
+                </main>
+                
+           
+    }
+    else
+    {
+        <main>
+            <div class="container-fluid px-4">
+                @RenderBody()
+
+            </div>
+        </main>
+    }
+    <!-- Scripts al final del cuerpo -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

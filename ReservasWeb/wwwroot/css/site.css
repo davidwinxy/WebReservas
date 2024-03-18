@@ -1,0 +1,30 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.navbar-orange {
+    background-color: #ffa726; 
+}
+
+
+    .navbar-orange .navbar-brand,
+    .navbar-orange .navbar-nav .nav-link {
+        color: #ffffff; 
+        margin-left: 10px;
+        margin-right: 10px;
+    }
